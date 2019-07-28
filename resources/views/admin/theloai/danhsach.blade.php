@@ -16,7 +16,7 @@
                 <div class="table-responsive">
                     @if (session('thongbao'))
                         <div class="alert alert-success">
-                                {{session('thongbao')}}
+                            {{session('thongbao')}}
                         </div>
                     @endif
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -50,7 +50,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="pull-right">{{ $theloai->links() }}</div>
+                    {{-- <div class="pull-right">{{ $theloai->links() }}</div> --}}
                 </div>
             </div>
         </div>

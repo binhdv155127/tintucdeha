@@ -44,7 +44,7 @@
                             </div>
                         @endif
                         <form role="form" action="admin/dangnhap" method="POST">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                            @csrf
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>

@@ -31,22 +31,21 @@
     </div>
 
     <!-- ##### Header Area Start ##### -->
-    <header class="header-area">
-
+    
        @include('layout.menu')
-    </header>
+
+       @yield('meba')
     <!-- ##### Header Area End ##### -->
 
     
 
     <!-- ##### Mag Posts Area Start ##### -->
-    <section class="mag-posts-area d-flex flex-wrap">
-
+    
         @yield('content')
 
-        @include('layout.danhmuc')
-    </section>
+   
     <!-- ##### Mag Posts Area End ##### -->
+
 
     @include('layout.footer')
 
@@ -61,6 +60,8 @@
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+
+    @yield('script')
 </body>
 
 </html>

@@ -105,3 +105,35 @@ Route::get('admin/logout','UserController@getDangXuatAdmin');
 //  giao diện người dùng
 
 Route::get('trangchu','PageController@trangchu');
+Route::get('lienhe','PageController@lienhe');
+Route::get('about','PageController@about');
+Route::get('theloai/{id}/{TenKhongDau}.html','PageController@theloai');
+Route::get('loaitin/{id}/{TenKhongDau}.html','PageController@loaitin');
+Route::get('tintuc/{id}/{TieuDeKhongDau}.html','PageController@tintuc');
+
+
+
+Route::get('dangnhap','PageController@getDangNhap');
+Route::post('dangnhap','PageController@postDangNhap');
+Route::get('dangxuat','PageController@getDangXuat');
+Route::get('nguoidung','PageController@getNguoiDung');
+Route::post('nguoidung','PageController@postNguoiDung');
+
+Route::get('dangky','PageController@getDangKy');
+Route::post('dangky','PageController@postDangKy');
+
+Route::post('comment/{id}','CommentController@postComment');
+
+Route::post('timkiem','PageController@timkiem');
+
+
+Route::middleware('throttle:6,1')->group(function () {
+    Route::get('/foo', function () {
+        echo 'foo';
+   });
+});
+Route::middleware('throttle:5,1')->group(function () {
+    Route::get('/bar', function () {
+        echo 'Baz';
+    });
+});

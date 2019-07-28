@@ -9,12 +9,12 @@ use App\Slide;
 class SlideController extends Controller
 {
     public function getDanhSach(){
-        $slide=Slide::all(); 
-          return view('admin.slide.danhsach',['slide'=>$slide]);
+      $slide=Slide::all(); 
+      return view('admin.slide.danhsach',['slide'=>$slide]);
     }
 
     public function getThem(){
-        return view('admin.slide.them');
+      return view('admin.slide.them');
     }
 
     public function postThem(Request $request){

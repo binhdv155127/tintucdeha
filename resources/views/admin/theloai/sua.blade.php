@@ -16,15 +16,6 @@
                 </div>
                 <div class="row" style="margin: 5px">
                     <div class="col-lg-12">
-                        @if (count($errors)>0)
-                            <div class="alert alert-danger">
-                                @foreach ($errors->all() as $err)
-                                    {{$err}} <br>
-                                @endforeach
-        
-                            </div>
-                        @endif
-        
                         @if (session('thongbao'))
                             <div class="alert alert-success">
                                     {{session('thongbao')}}
@@ -34,7 +25,10 @@
                             @csrf
                             <fieldset class="form-group">
                                 <label>Tên thể loại</label>
-                            <input class="form-control" placeholder="nhập tên thể loại" name="Ten" value="{{$theloai->Ten}}">
+                                <input class="form-control" placeholder="nhập tên thể loại" name="Ten" value="{{$theloai->Ten}}">
+                                @if($errors->has('Ten'))
+                                    <div class="alert alert-danger">{{$errors->first("Ten")}}</div>
+                                @endif
                             </fieldset>
                             <button type="submit" class="btn btn-success">sửa</button>
                             <button type="reset" class="btn btn-primary">làm mới</button>

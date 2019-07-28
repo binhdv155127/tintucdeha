@@ -6,20 +6,35 @@ use Illuminate\Database\Eloquent\Model;
 
 class TheLoai extends Model
 {
-    //
-    protected $table="TheLoai";
+    protected $table = "theloai";
 
-    public function loaitin(){ // lấy ra tất cả các loại tin của thằng thể loại này
-        // 1 thể loại có nhiều loại tin => dùng hasMany
+    protected $fillable=['Ten','TenKhongDau'];
 
-        // App\loại tin trỏ tới loại tin||| khóa phụ||| khóa chính
+    public function loaitin(){
         return $this->hasMany('App\LoaiTin','idTheLoai','id');
     }
-    public function tintuc(){ // lấy ra hết các tin tức trong thể loại (từ các loại tin khác nhau)
+    public function tintuc(){   
+        return $this->hasManyThrough('App\TinTuc','App\LoaiTin','idTheLoai','idLoaiTin','id');
+    }
 
-        // liên kết từ tin tức thông qua bảng loại tin đến thể loại => dùng hasManyThrough
+    public static function getAllTheLoai(){
+        return $theloai= TheLoai::all();
+    }
+    public static function postStore($request){
+        $theloai= new TheLoai;
+        $theloai->Ten=$request;
+        $theloai->TenKhongDau=str_slug($request,'-'); 
+        $theloai->save();
+    }
 
-        
-        return $this->hasManyThrough('App\Tintuc','App\LoaiTin','idTheLoai','idLoaiTin','id');
+    public static function getOneTheLoai($id){
+        return $theloai = TheLoai::find($id);
+    }
+
+    public static function postUpdate($request,$id){
+        $theloai = TheLoai::find($id);
+        $theloai->Ten=$request;
+        $theloai->TenKhongDau=str_slug($request);
+        $theloai->save();
     }
 }

@@ -16,14 +16,14 @@
                 </div>
                 <div class="row" style="margin: 5px">
                     <div class="col-lg-12">
-                        @if (count($errors)>0)
+                        {{-- @if (count($errors)>0)
                             <div class="alert alert-danger">
                                 @foreach ($errors->all() as $err)
                                     {{$err}} <br>
                                 @endforeach
         
                             </div>
-                        @endif
+                        @endif --}}
         
                         @if (session('thongbao'))
                             <div class="alert alert-success">
@@ -35,6 +35,11 @@
                             <fieldset class="form-group">
                                 <label>tên thể loại</label>
                                 <input class="form-control" placeholder="nhập tên thể loại" name="Ten">
+                                @if($errors->has('Ten'))
+                                    <div class="alert alert-danger">
+                                        {{$errors->first('Ten')}}
+                                    </div>
+                                @endif
                             </fieldset>
                             <button type="submit" class="btn btn-success">thêm</button>
                             <button type="reset" class="btn btn-primary">làm mới</button>
